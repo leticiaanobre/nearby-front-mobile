@@ -13,7 +13,7 @@ export default function Index(){
             }}>
             <Welcome/>
             <Steps/>
-            <Button isLoading>
+            <Button >
                 <Button.Title>Começar</Button.Title>
             </Button>
         </View>
