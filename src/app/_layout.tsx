@@ -1,5 +1,6 @@
 import { Stack } from "expo-router"
 import { colors } from "@/styles/theme"
+import { Loading } from "@/components/loading"
 
 import {useFonts,
     Rubik_600SemiBold,
@@ -17,7 +18,7 @@ export default function Layout() {
     })
 
     if(!fontsLoaded) {
-        return
+        return <Loading/>
     }
 
     return <Stack screenOptions={{
