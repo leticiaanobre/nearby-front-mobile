@@ -17,6 +17,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^7.0.0",
     "@tabler/icons-react-native": "^3.24.0",
+    "axios": "^1.7.9",
     "expo": "~52.0.17",
     "expo-font": "~13.0.1",
     "expo-linking": "~7.0.3",
