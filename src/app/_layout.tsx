@@ -1,5 +1,5 @@
 import { Stack } from "expo-router"
-import { colors } from "@/styles/colors"
+import { colors } from "@/styles/theme"
 
 import {useFonts,
     Rubik_600SemiBold,
@@ -19,7 +19,7 @@ export default function Layout() {
     if(!fontsLoaded) {
         return
     }
-    
+
     return <Stack screenOptions={{
         headerShown: false,
         contentStyle: { backgroundColor: colors.gray[100] }
