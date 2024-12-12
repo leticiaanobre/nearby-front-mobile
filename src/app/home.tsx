@@ -44,7 +44,7 @@ export default function Home() {
 
     useEffect(() => {
         fetchMarkets()
-    }, [])
+    }, [category]) //defining depedency from last useEffect (category happens before markets effect)
 
     return (
         <View style={{flex: 1}}>
