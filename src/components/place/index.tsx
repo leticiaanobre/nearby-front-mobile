@@ -25,11 +25,11 @@ export function Place({data, ...rest}: Props) {
             <View style={s.content}>
                 <Text style={s.name}>{data.name}</Text>
                 <Text style={s.description}>{data.description}</Text>
-            </View>
 
-            <View style={s.footer}>
-                <IconTicket size={16} color={colors.red.base} />
-                <Text style={s.tickets}>{data.cupons} cupons disponíveis</Text>
+                <View style={s.footer}>
+                    <IconTicket size={16} color={colors.red.base} />
+                    <Text style={s.tickets}>{data.cupons} cupons disponíveis</Text>
+                </View>
             </View>
         </TouchableOpacity>
     )
