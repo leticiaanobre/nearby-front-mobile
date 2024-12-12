@@ -5,7 +5,7 @@ export const s = StyleSheet.create({
     container: {
         height: 120,
         width: "100%",
-        padding: 18,
+        padding: 8,
         borderWidth: 1,
         borderColor: colors.gray[200],
         borderRadius: 12,
@@ -21,7 +21,8 @@ export const s = StyleSheet.create({
     },
     content: {
         flex: 1,
-        gap: 4
+        gap: 4,
+        paddingVertical: 8
     }, 
     name: {
         fontSize: 14,
