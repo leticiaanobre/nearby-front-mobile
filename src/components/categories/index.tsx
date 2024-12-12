@@ -1,5 +1,6 @@
 import { FlatList } from "react-native";
 import { Category } from "../category";
+import {s} from "./styles"
 
 export type CategoriesProps = {
     id: string;
@@ -19,6 +20,9 @@ export function Categories({ data }: Props) {
             renderItem={({ item }) => (
                 <Category name={item.name} iconId={item.id} />
             )}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            contentContainerStyle={s.content}
         />
     );
 }
