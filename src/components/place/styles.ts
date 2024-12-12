@@ -22,7 +22,8 @@ export const s = StyleSheet.create({
     content: {
         flex: 1,
         gap: 4,
-        paddingVertical: 8
+        paddingVertical: 8,
+        paddingRight: 10
     }, 
     name: {
         fontSize: 14,
