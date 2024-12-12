@@ -3,6 +3,7 @@ import { View, Text, Alert } from "react-native";
 import { useEffect, useState } from "react";
 import { Categories, CategoriesProps } from "@/components/categories";
 import { PlaceProps } from "@/components/place";
+import { Places } from "@/components/places";
 
 type MarketsProps = PlaceProps 
 
@@ -30,7 +31,7 @@ export default function Home() {
 
             const {data} = await api.get("/markets/category/" + category)
             setMarkets(data)
-            console.log(data)
+            // console.log(data)
         } catch (error) {
             console.log(error)
             Alert.alert("Locais", "Não foi possível carregar os locais.")
@@ -49,6 +50,7 @@ export default function Home() {
     return (
         <View style={{flex: 1}}>
             <Categories data={categories}  onSelect={setCategory} selected={category}/>
+            <Places data={markets}/>
         </View>
     )
 }
