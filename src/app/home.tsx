@@ -20,9 +20,6 @@ export default function Home() {
     return (
         <View style={{flex: 1}}>
             <Categories data={categories} />
-            <Categories data={categories} />
-            <Categories data={categories} />
-            <Categories data={categories} />
         </View>
     )
 }
