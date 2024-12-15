@@ -14,3 +14,20 @@ export type PropsDetails = {
         description: string
     }[]
 }
+
+type Props = {
+    data: PropsDetails
+}
+
+export function Details({data}: Props) {
+    return (
+        <View style={s.container}>
+            <Text style={s.name}>{data.name}</Text>
+            <Text style={s.description}>{data.description}</Text>
+
+            <View style={s.group}>
+                <Text style={s.title}>Informações</Text>
+            </View>
+        </View>
+    )
+}
