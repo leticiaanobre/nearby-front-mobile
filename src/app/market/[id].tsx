@@ -6,6 +6,7 @@ import { api } from "@/services/api";
 import { Loading } from "@/components/loading";
 import { Cover } from "@/components/market/cover";
 import { Details, PropsDetails } from "@/components/market/details";
+import { Cupon } from "@/components/market/cupon";
 
 type DataProps = PropsDetails & {
     cover: string
@@ -49,6 +50,7 @@ export default function Market() {
         <View style={{flex: 1}}>
             <Cover uri={data.cover}/>
             <Details data={data}/>
+            <Cupon code="FM4345T6" />
         </View>
     )
 }
