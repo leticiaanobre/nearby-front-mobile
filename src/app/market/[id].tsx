@@ -80,7 +80,7 @@ export default function Market() {
             <Modal style={{flex:1}} visible={isVisibleCameraModal}>
                 <CameraView style={{flex: 1}}/>
 
-                <View style={{flex: 1, justifyContent: "center"}}>
+                <View style={{position: "absolute", bottom: 32, left: 32, right: 32}}>
                     <Button onPress={() => setIsVisibleCameraModal(false)}>
                         <Button.Title>Voltar</Button.Title>
                     </Button>
