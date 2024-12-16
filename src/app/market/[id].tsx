@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { View, Modal, Alert } from "react-native";
+import { View, Modal, Alert, StatusBar, ScrollView } from "react-native";
 import {router, useLocalSearchParams, Redirect} from "expo-router"
 import { api } from "@/services/api";
 import { useCameraPermissions, CameraView } from "expo-camera";
@@ -103,8 +103,11 @@ export default function Market() {
 
     return (
         <View style={{flex: 1}}>
-            <Cover uri={data.cover}/>
-            <Details data={data}/>
+            <StatusBar barStyle="light-content" hidden={isVisibleCameraModal} />
+            <ScrollView showsVerticalScrollIndicator={false} >
+                <Cover uri={data.cover}/>
+                <Details data={data}/>
+            </ScrollView>
             { cupon && <Cupon code={cupon} />}
             <View style ={{padding: 32}}>
                 <Button onPress={handleOpeCamera}>
