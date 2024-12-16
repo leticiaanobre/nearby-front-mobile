@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Text, Alert } from "react-native";
+import { View, Modal, Alert } from "react-native";
 import {router, useLocalSearchParams, Redirect} from "expo-router"
 import { api } from "@/services/api";
 
@@ -7,6 +7,7 @@ import { Loading } from "@/components/loading";
 import { Cover } from "@/components/market/cover";
 import { Details, PropsDetails } from "@/components/market/details";
 import { Cupon } from "@/components/market/cupon";
+import { Button } from "@/components/button";
 
 type DataProps = PropsDetails & {
     cover: string
@@ -17,6 +18,8 @@ export default function Market() {
     const params = useLocalSearchParams<{id: string}>()
     const [data, setData] = useState<DataProps>()
     const [isLoading, setIsLoading] = useState(true)
+    const [cupon, setCupon] = useState<string | null>(null)
+    const [isVisibleCameraModal, setIsVisibleCameraModal] = useState(false)
 
     async function fetchMarket() {
         try {
@@ -31,6 +34,14 @@ export default function Market() {
                     onPress: () => router.back()
                 }
             ])
+        }
+    }
+
+    function handleOpeCamera() {
+        try {
+            setIsVisibleCameraModal(true)
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -50,7 +61,20 @@ export default function Market() {
         <View style={{flex: 1}}>
             <Cover uri={data.cover}/>
             <Details data={data}/>
-            <Cupon code="FM4345T6" />
+            { cupon && <Cupon code={cupon} />}
+            <View style ={{padding: 32}}>
+                <Button onPress={handleOpeCamera}>
+                    <Button.Title>Ler QR Code</Button.Title>
+                </Button>
+            </View>
+
+            <Modal style={{flex:1}} visible={isVisibleCameraModal}>
+                <View style={{flex: 1, justifyContent: "center"}}>
+                    <Button onPress={() => setIsVisibleCameraModal(false)}>
+                        <Button.Title>Voltar</Button.Title>
+                    </Button>
+                </View>
+            </Modal>
         </View>
     )
 }
