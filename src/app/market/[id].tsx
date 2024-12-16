@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { View, Modal, Alert } from "react-native";
 import {router, useLocalSearchParams, Redirect} from "expo-router"
 import { api } from "@/services/api";
+import { useCameraPermissions, CameraView } from "expo-camera";
 
 import { Loading } from "@/components/loading";
 import { Cover } from "@/components/market/cover";
@@ -15,11 +16,13 @@ type DataProps = PropsDetails & {
 
 export default function Market() {
 
-    const params = useLocalSearchParams<{id: string}>()
     const [data, setData] = useState<DataProps>()
     const [isLoading, setIsLoading] = useState(true)
     const [cupon, setCupon] = useState<string | null>(null)
     const [isVisibleCameraModal, setIsVisibleCameraModal] = useState(false)
+
+    const [_, requestPermission] = useCameraPermissions()
+    const params = useLocalSearchParams<{id: string}>()
 
     async function fetchMarket() {
         try {
@@ -37,11 +40,17 @@ export default function Market() {
         }
     }
 
-    function handleOpeCamera() {
+   async function handleOpeCamera() {
         try {
+            const {granted} = await requestPermission()
+
+            if(!granted) {
+                return Alert.alert("Câmera", "Você precisa habilitar o uso da câmera")
+            }
             setIsVisibleCameraModal(true)
         } catch (error) {
             console.log(error)
+            Alert.alert("Câmera", "Não foi possível utilizar a câmera")
         }
     }
 
@@ -69,6 +78,8 @@ export default function Market() {
             </View>
 
             <Modal style={{flex:1}} visible={isVisibleCameraModal}>
+                <CameraView style={{flex: 1}}/>
+
                 <View style={{flex: 1, justifyContent: "center"}}>
                     <Button onPress={() => setIsVisibleCameraModal(false)}>
                         <Button.Title>Voltar</Button.Title>
